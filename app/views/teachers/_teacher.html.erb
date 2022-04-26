@@ -1,0 +1,11 @@
+<div id="<%= "#{dom_id(teacher)}_item" %>" class="table-row-group bg-grey">
+  <%= turbo_frame_tag dom_id(teacher), class: 'table-row' do %> 
+    <div class="table-cell px-6 py-3"><%= teacher.name %></div>
+    <div class="table-cell px-6 py-3"><%= teacher.school %></div>
+    <div class="table-cell px-6 py-3"><%= teacher.school_year %></div>
+    <div class="table-cell px-6 py-3 text-right text-blue-600 visited:text-purple-600">
+      <%= link_to 'Edit', edit_teacher_path(teacher), class: 'hover:text-blue-300' %>
+      <%= button_to 'Delete', teacher_path(teacher), method: :delete, class: 'hover:text-blue-300' %>   
+    </div>
+  <% end %>
+</div>

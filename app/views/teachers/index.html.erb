@@ -1,0 +1,49 @@
+<div class="container mx-auto px-4">
+  <div class="py-2">
+    <%= render 'form', teacher: Teacher.new %>
+  </div>
+
+  <%= turbo_frame_tag "index" do %>
+    <div class="relative overflow-x-auto sm:rounded-lg">
+      <div id="teachers" class="table w-full bg-gray-300 text-sm text-left rounded-md">
+        <div class="table-header-group text-xs text-white uppercase dark:bg-blue-700">
+          <div class="table-row">
+            <div class="table-cell px-6 py-3">
+              <div class="float-left">Name</div>
+              <div class="float-right">
+                <%= link_to teachers_path sort: select_direction(:name) do %>
+                  <svg class="h-4 w-4 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M3 9l4-4l4 4m-4 -4v14" />  <path d="M21 15l-4 4l-4-4m4 4v-14" /></svg>
+                <% end %>
+              </div>
+            </div>
+            <div class="table-cell px-6 py-3">
+              <div class="float-left">School</div>
+              <div class="float-right">
+                <%= link_to teachers_path sort: select_direction(:school) do %>
+                  <svg class="h-4 w-4 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M3 9l4-4l4 4m-4 -4v14" />  <path d="M21 15l-4 4l-4-4m4 4v-14" /></svg>
+                <% end %>
+              </div>
+            </div>
+            <div class="table-cell px-6 py-3">
+              <div class="float-left">School Year</div>
+              <div class="float-right">
+                <%= link_to teachers_path sort: select_direction(:school_year) do %>
+                  <svg class="h-4 w-4 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M3 9l4-4l4 4m-4 -4v14" />  <path d="M21 15l-4 4l-4-4m4 4v-14" /></svg>
+                <% end %>
+              </div>
+            </div>
+            <div class="table-cell px-6 py-3">
+              <div class="float-right">Actions</div>
+            </div>
+          </div>
+        </div>
+        
+        <%= render @teachers %>
+      </div>
+    </div>
+
+    <div class="py-4">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>

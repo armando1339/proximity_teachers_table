@@ -1,0 +1,49 @@
+<%= form_with(model: teacher, id: "#{dom_id(teacher)}_form") do |form| %>
+  <% if action_name == 'edit' %>
+    <div class="table-cell px-6 py-3">
+      <%= form.text_field :name, class: "border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5", placeholder: 'Name' %>
+    </div>
+
+    <div class="table-cell px-6 py-3">
+      <%= form.text_field :school, class: "border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5", placeholder: 'School' %>
+    </div>
+
+    <div class="table-cell px-6 py-3">
+      <%= form.text_field :school_year, class: "border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5", placeholder: 'school Year' %>
+    </div>
+
+    <div class="table-cell px-6 py-3">
+      <%= form.submit class: 'inline-block w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %> 
+    </div>
+  <% else %>
+    <% if teacher.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+        <ul>
+          <% teacher.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="grid gap-4 grid-cols-4">
+      <div class="mb-2">
+        <%= form.text_field :name, class: "border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5", placeholder: 'Name' %>
+      </div>
+
+      <div class="mb-2">
+        <%= form.text_field :school, class: "border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5", placeholder: 'School' %>
+      </div>
+
+      <div class="mb-2">
+        <%= form.text_field :school_year, class: "border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5", placeholder: 'school Year' %>
+      </div>
+
+      <div class="mb-2">
+        <%= form.submit class: 'inline-block w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %> 
+      </div>
+    </div>
+  <% end %>
+<% end %>

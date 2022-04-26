@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend 'teachers' do %>
+  <%= render 'teacher', teacher: @teacher %>
+<% end %>
+
+<%= turbo_stream.replace "#{dom_id(Teacher.new)}_form" do %>
+  <%= render 'form', teacher: Teacher.new %>
+<% end %>
